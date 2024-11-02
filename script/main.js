@@ -224,10 +224,7 @@ const animationTimeline = () => {
       rotation: -180,
       opacity: 0
     })
-    .call(() => {
-      const audio = document.getElementById("birthdaySong");
-      audio.play();
-    })
+    
     .staggerFrom(
       ".wish-hbd span",
       0.7,

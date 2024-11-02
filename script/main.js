@@ -282,6 +282,10 @@ const animationTimeline = () => {
       y: 30,
       zIndex: "-1"
     })
+    .call(() => {
+      const audio = document.getElementById("birthdaySong");
+      audio.play();
+    })
     .staggerFrom(".nine p", 1, ideaTextTrans, 1.2)
     .to(
       ".last-smile",

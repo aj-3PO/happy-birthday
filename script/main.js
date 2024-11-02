@@ -29,6 +29,7 @@ const animationTimeline = () => {
   // Spit chars that needs to be animated individually
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
+
   textBoxChars.innerHTML = <span>${textBoxChars.innerHTML
     .split("")
     .join("</span><span>")}</span;
@@ -281,11 +282,6 @@ const animationTimeline = () => {
       y: 30,
       zIndex: "-1"
     })
-    .call(() => {
-      const audio = document.getElementById("birthdaySong");
-      audio.play();
-    })
-    
     .staggerFrom(".nine p", 1, ideaTextTrans, 1.2)
     .to(
       ".last-smile",
@@ -307,4 +303,4 @@ const animationTimeline = () => {
 };
 
 // Run fetch and animation in sequence
-fetchData();
+fetchData(); 

@@ -217,14 +217,16 @@ const animationTimeline = () => {
         x: 25,
         y: -25,
         rotationZ: -45
-      },
-      "-=2"
-    )
+      },"-=2")
     .from(".hat", 0.5, {
       x: -100,
       y: 350,
       rotation: -180,
       opacity: 0
+    })
+    .call(() => {
+      const audio = document.getElementById("birthdaySong");
+      audio.play();
     })
     .staggerFrom(
       ".wish-hbd span",
@@ -281,10 +283,6 @@ const animationTimeline = () => {
       opacity: 0,
       y: 30,
       zIndex: "-1"
-    })
-    .call(() => {
-      const audio = document.getElementById("birthdaySong");
-      audio.play();
     })
     .staggerFrom(".nine p", 1, ideaTextTrans, 1.2)
     .to(

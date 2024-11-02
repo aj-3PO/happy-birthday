@@ -208,6 +208,10 @@ const animationTimeline = () => {
       },
       0.2
     )
+    .call(() => {
+      const audio = document.getElementById("birthdaySong");
+      audio.play();
+    })
     .from(
       ".arsh-dp",
       0.5,
@@ -225,10 +229,6 @@ const animationTimeline = () => {
       y: 350,
       rotation: -180,
       opacity: 0
-    })
-    .call(() => {
-      const audio = document.getElementById("birthdaySong");
-      audio.play();
     })
     .staggerFrom(
       ".wish-hbd span",

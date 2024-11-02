@@ -1,4 +1,4 @@
-/ Import the data to customize and insert them into page
+// Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")
     .then(data => data.json())
@@ -8,10 +8,10 @@ const fetchData = () => {
         if (data[customData] !== "") {
           if (customData === "imagePath") {
             document
-              .querySelector([data-node-name*="${customData}"])
+              .querySelector(`[data-node-name*="${customData}"]`)
               .setAttribute("src", data[customData]);
           } else {
-            document.querySelector([data-node-name*="${customData}"]).innerText = data[customData];
+            document.querySelector(`[data-node-name*="${customData}"]`).innerText = data[customData];
           }
         }
 
@@ -30,13 +30,13 @@ const animationTimeline = () => {
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
 
-  textBoxChars.innerHTML = <span>${textBoxChars.innerHTML
+  textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
     .split("")
-    .join("</span><span>")}</span;
+    .join("</span><span>")}</span`;
 
-  hbd.innerHTML = <span>${hbd.innerHTML
+  hbd.innerHTML = `<span>${hbd.innerHTML
     .split("")
-    .join("</span><span>")}</span;
+    .join("</span><span>")}</span`;
 
   const ideaTextTrans = {
     opacity: 0,
@@ -217,14 +217,15 @@ const animationTimeline = () => {
         x: 25,
         y: -25,
         rotationZ: -45
-      },"-=2")
+      },
+      "-=2"
+    )
     .from(".hat", 0.5, {
       x: -100,
       y: 350,
       rotation: -180,
       opacity: 0
     })
-    
     .staggerFrom(
       ".wish-hbd span",
       0.7,
@@ -302,4 +303,4 @@ const animationTimeline = () => {
 };
 
 // Run fetch and animation in sequence
-fetchData(); 
+fetchData();

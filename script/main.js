@@ -16,8 +16,8 @@ const fetchData = () => {
         }
 
         // Check if the iteration is over
-        // Run amimation if so
-        if ( dataArr.length === dataArr.indexOf(customData) + 1 ) {
+        // Run animation if so
+        if (dataArr.length === dataArr.indexOf(customData) + 1) {
           animationTimeline();
         } 
       });
@@ -87,7 +87,6 @@ const animationTimeline = () => {
     .from(".three", 0.7, {
       opacity: 0,
       y: 10
-      // scale: 0.7
     })
     .to(
       ".three",
@@ -232,7 +231,6 @@ const animationTimeline = () => {
       {
         opacity: 0,
         y: -50,
-        // scale: 0.3,
         rotation: 150,
         skewX: "30deg",
         ease: Elastic.easeOut.config(1, 0.5)
@@ -290,16 +288,20 @@ const animationTimeline = () => {
         rotation: 90
       },
       "+=1"
-    );
-
-  // tl.seek("currentStep");
-  // tl.timeScale(2);
+    )
+    .eventCallback("onComplete", playAudio); // Play audio after the timeline completes
 
   // Restart Animation on click
   const replyBtn = document.getElementById("replay");
   replyBtn.addEventListener("click", () => {
     tl.restart();
   });
+};
+
+// Function to play audio
+const playAudio = () => {
+  const audio = document.getElementById('birthdayAudio');
+  audio.play(); // Play the audio
 };
 
 // Run fetch and animation in sequence

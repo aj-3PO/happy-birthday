@@ -1,4 +1,4 @@
-// Import the data to customize and insert them into page
+/ Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")
     .then(data => data.json())
@@ -8,16 +8,16 @@ const fetchData = () => {
         if (data[customData] !== "") {
           if (customData === "imagePath") {
             document
-              .querySelector(`[data-node-name*="${customData}"]`)
+              .querySelector([data-node-name*="${customData}"])
               .setAttribute("src", data[customData]);
           } else {
-            document.querySelector(`[data-node-name*="${customData}"]`).innerText = data[customData];
+            document.querySelector([data-node-name*="${customData}"]).innerText = data[customData];
           }
         }
 
         // Check if the iteration is over
-        // Run animation if so
-        if (dataArr.length === dataArr.indexOf(customData) + 1) {
+        // Run amimation if so
+        if ( dataArr.length === dataArr.indexOf(customData) + 1 ) {
           animationTimeline();
         } 
       });
@@ -30,13 +30,13 @@ const animationTimeline = () => {
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
 
-  textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
+  textBoxChars.innerHTML = <span>${textBoxChars.innerHTML
     .split("")
-    .join("</span><span>")}</span`;
+    .join("</span><span>")}</span;
 
-  hbd.innerHTML = `<span>${hbd.innerHTML
+  hbd.innerHTML = <span>${hbd.innerHTML
     .split("")
-    .join("</span><span>")}</span`;
+    .join("</span><span>")}</span;
 
   const ideaTextTrans = {
     opacity: 0,
@@ -87,6 +87,7 @@ const animationTimeline = () => {
     .from(".three", 0.7, {
       opacity: 0,
       y: 10
+      // scale: 0.7
     })
     .to(
       ".three",
@@ -231,6 +232,7 @@ const animationTimeline = () => {
       {
         opacity: 0,
         y: -50,
+        // scale: 0.3,
         rotation: 150,
         skewX: "30deg",
         ease: Elastic.easeOut.config(1, 0.5)
@@ -288,20 +290,16 @@ const animationTimeline = () => {
         rotation: 90
       },
       "+=1"
-    )
-    .eventCallback("onComplete", playAudio); // Play audio after the timeline completes
+    );
+
+  // tl.seek("currentStep");
+  // tl.timeScale(2);
 
   // Restart Animation on click
   const replyBtn = document.getElementById("replay");
   replyBtn.addEventListener("click", () => {
     tl.restart();
   });
-};
-
-// Function to play audio
-const playAudio = () => {
-  const audio = document.getElementById('birthdayAudio');
-  audio.play(); // Play the audio
 };
 
 // Run fetch and animation in sequence
